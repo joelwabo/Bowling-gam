@@ -4,16 +4,22 @@ using System.Collections;
 public class pinController : MonoBehaviour {
 
 	public bool state = true;
+    private GlobalParameters parameters;
 
 	// Use this for initialization
 	void Start () {
-		
+        parameters = GameObject.Find("Main Play Scene").GetComponent<GlobalParameters>();
 	}
 
-	void OnCollisionExit2D() {
-		if (gameObject.Transform.position.x > gameObject.Transform.position.y) {
-			state = false;
-			Destroy (gameObject, 5);
-		}
-	}
+    // Count out fallen pins
+    /*void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "cave floor")
+        {
+            Debug.Log("Pin felt: " +  name);
+
+            // Increment the fallen pins of the frame's round
+            parameters.incrementFallenPins();
+        }
+    }*/
 }

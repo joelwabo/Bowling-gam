@@ -1,0 +1,209 @@
+fileFormatVersion: 2
+guid: 4188a8b26fd2420418324ce61b424dca
+timeCreated: 1482183824
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: ball_area
+    100002: ball_area_001
+    100004: ball_recovery_tunel_join
+    100006: ball_recovery_tunel_join_001
+    100008: ball_recovery_tunel_join_002
+    100010: ball_recovery_tunel_join_003
+    100012: ball_recovery_tunel_join_004
+    100014: ball_recovery_vertical_tunel
+    100016: ball_recovery_vertical_tunel_001
+    100018: ball_recovery_vertical_tunel_002
+    100020: ball_recovery_way
+    100022: ball_recovery_way_001
+    100024: ball_recovery_way_002
+    100026: ball_return_curve
+    100028: ball_return_tunnel
+    100030: ball_return_tunnel_001
+    100032: ball_return_tunnel_002
+    100034: ball_storage
+    100036: ball_storage_001
+    100038: ball_storage_002
+    100040: //RootNode
+    100042: cave_recovering
+    100044: cave_recovering_002
+    100046: player_area
+    100048: player_area_001
+    100050: throwing_area
+    100052: throwing_area_001
+    400000: ball_area
+    400002: ball_area_001
+    400004: ball_recovery_tunel_join
+    400006: ball_recovery_tunel_join_001
+    400008: ball_recovery_tunel_join_002
+    400010: ball_recovery_tunel_join_003
+    400012: ball_recovery_tunel_join_004
+    400014: ball_recovery_vertical_tunel
+    400016: ball_recovery_vertical_tunel_001
+    400018: ball_recovery_vertical_tunel_002
+    400020: ball_recovery_way
+    400022: ball_recovery_way_001
+    400024: ball_recovery_way_002
+    400026: ball_return_curve
+    400028: ball_return_tunnel
+    400030: ball_return_tunnel_001
+    400032: ball_return_tunnel_002
+    400034: ball_storage
+    400036: ball_storage_001
+    400038: ball_storage_002
+    400040: //RootNode
+    400042: cave_recovering
+    400044: cave_recovering_002
+    400046: player_area
+    400048: player_area_001
+    400050: throwing_area
+    400052: throwing_area_001
+    2300000: ball_area
+    2300002: ball_area_001
+    2300004: ball_recovery_tunel_join
+    2300006: ball_recovery_tunel_join_001
+    2300008: ball_recovery_tunel_join_002
+    2300010: ball_recovery_tunel_join_003
+    2300012: ball_recovery_tunel_join_004
+    2300014: ball_recovery_vertical_tunel
+    2300016: ball_recovery_vertical_tunel_001
+    2300018: ball_recovery_vertical_tunel_002
+    2300020: ball_recovery_way
+    2300022: ball_recovery_way_001
+    2300024: ball_recovery_way_002
+    2300026: ball_return_curve
+    2300028: ball_return_tunnel
+    2300030: ball_return_tunnel_001
+    2300032: ball_return_tunnel_002
+    2300034: ball_storage
+    2300036: ball_storage_001
+    2300038: ball_storage_002
+    2300040: cave_recovering
+    2300042: cave_recovering_002
+    2300044: player_area
+    2300046: player_area_001
+    2300048: throwing_area
+    2300050: throwing_area_001
+    3300000: ball_area
+    3300002: ball_area_001
+    3300004: ball_recovery_tunel_join
+    3300006: ball_recovery_tunel_join_001
+    3300008: ball_recovery_tunel_join_002
+    3300010: ball_recovery_tunel_join_003
+    3300012: ball_recovery_tunel_join_004
+    3300014: ball_recovery_vertical_tunel
+    3300016: ball_recovery_vertical_tunel_001
+    3300018: ball_recovery_vertical_tunel_002
+    3300020: ball_recovery_way
+    3300022: ball_recovery_way_001
+    3300024: ball_recovery_way_002
+    3300026: ball_return_curve
+    3300028: ball_return_tunnel
+    3300030: ball_return_tunnel_001
+    3300032: ball_return_tunnel_002
+    3300034: ball_storage
+    3300036: ball_storage_001
+    3300038: ball_storage_002
+    3300040: cave_recovering
+    3300042: cave_recovering_002
+    3300044: player_area
+    3300046: player_area_001
+    3300048: throwing_area
+    3300050: throwing_area_001
+    4300000: cave_recovering
+    4300002: ball_storage_002
+    4300004: ball_recovery_tunel_join_004
+    4300006: ball_recovery_vertical_tunel_002
+    4300008: ball_recovery_tunel_join_002
+    4300010: ball_return_tunnel_002
+    4300012: ball_recovery_way_002
+    4300014: ball_recovery_way
+    4300016: ball_storage
+    4300018: ball_recovery_tunel_join
+    4300020: ball_recovery_vertical_tunel
+    4300022: ball_return_tunnel
+    4300024: ball_return_curve
+    4300026: player_area
+    4300028: throwing_area
+    4300030: ball_area
+    4300032: ball_area_001
+    4300034: throwing_area_001
+    4300036: ball_recovery_way_001
+    4300038: ball_return_tunnel_001
+    4300040: ball_recovery_tunel_join_001
+    4300042: ball_recovery_vertical_tunel_001
+    4300044: player_area_001
+    4300046: ball_recovery_tunel_join_003
+    4300048: ball_storage_001
+    4300050: cave_recovering_002
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
