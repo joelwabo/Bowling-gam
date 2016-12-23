@@ -7,7 +7,7 @@ public class MainController : MonoBehaviour {
     private GlobalParameters parameters;
 	// Use this for initialization
 	void Start () {
-        parameters = GameObject.Find("Main Play Scene").GetComponent<GlobalParameters>();
+        parameters = GameObject.Find("RightLane").GetComponent<GlobalParameters>();
         parameters.initNextFrame();
     }
 	
@@ -27,7 +27,7 @@ public class MainController : MonoBehaviour {
 
             // Return the ball to the storage
             Debug.Log("Ball " + obj.name + " in the cave");
-            obj.transform.position = GameObject.Find("Main Play Scene/bowling lane/ball_recovery_vertical_tunel_001/ball return gate").transform.position;
+            obj.transform.position = GameObject.Find("RightLane/Lane/ball_recovery_vertical_tunel_001/ball return gate").transform.position;
             obj.GetComponent<Rigidbody>().AddForce(new Vector3(0, 60, 0), ForceMode.Impulse);
 
             // Start fallen pins accounting, by recoverying them so that they could be countable

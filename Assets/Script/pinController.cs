@@ -8,7 +8,7 @@ public class pinController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        parameters = GameObject.Find("Main Play Scene").GetComponent<GlobalParameters>();
+        parameters = GameObject.Find("RightLane").GetComponent<GlobalParameters>();
 	}
 
     // Count out fallen pins

@@ -6,7 +6,7 @@ public class ballController : MonoBehaviour {
 
     public bool useControllers = false;
     
-    public float playerForce = 80;
+    public float playerForce;
     private Vector3[] positions = new Vector3[3];
     private float[] times = new float[3];
 
@@ -19,7 +19,8 @@ public class ballController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         cam = Camera.main;
-        hand = GameObject.Find("Main Play Scene/hand");
+        hand = GameObject.Find("hand");
+        playerForce = 100;
     }
 	
 	// Update is called once per frame
@@ -86,10 +87,11 @@ public class ballController : MonoBehaviour {
      */
     private void pickupBallWithMouse()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        Ray ray = cam.ScreenPointToRay(hand.transform.position);
         RaycastHit hit;
         if (Physics.Raycast(hand.transform.position, ray.direction, out hit, Mathf.Infinity, 1 << transform.gameObject.layer))
         {
+            Debug.Log("Hit: " + hit.collider.tag);
             if (hit.collider.tag == "Ball")
             {
                 ballPickedUp = true;
@@ -156,10 +158,11 @@ public class ballController : MonoBehaviour {
         // The force component to compute the final initial velocity
         // The player force f must not exceed maximum player force
         Vector3 f = clamp(m * a - p, playerForce);
+        //Vector3 f = m * a - p;
         //f.Normalize();
         //f *= playerForce;
         Debug.Log("f: " + f);
-        //Debug.Log("Player force: " + playerForce);
+        Debug.Log("Player force: " + playerForce);
         // The move vector
         Vector3 d = positions[t] - positions[t - 2];
         // Unit directionnal vector

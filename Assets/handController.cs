@@ -15,10 +15,10 @@ public class handController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 storagePos = GameObject.Find("Main Play Scene/bowling lane/ball_storage_001").transform.position;
+        Vector3 storagePos = GameObject.Find("RightLane/Lane/ball_storage_001").transform.position;
         Vector3 mouse = Input.mousePosition;
         //mouse.z = -cam.transform.position.z + storagePos.z-0.5f;
-        mouse.z = keyPoint.z;
+        mouse.z = -cam.transform.position.z + keyPoint.z;
         Vector3 mWorldPos = cam.ScreenToWorldPoint(mouse);
 
         if (Input.GetKeyDown(KeyCode.Space))

@@ -46,7 +46,25 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GlobalParameters.cs" />
+     <Compile Include="Assets\MainController.cs" />
+     <Compile Include="Assets\SAColliderBuilder\Scripts\Internal\SABoneColliderCommon.cs" />
+     <Compile Include="Assets\SAColliderBuilder\Scripts\Internal\SAColliderBuilderCommon.cs" />
+     <Compile Include="Assets\SAColliderBuilder\Scripts\Internal\SAMeshColliderCommon.cs" />
+     <Compile Include="Assets\SAColliderBuilder\Scripts\SABoneCollider.cs" />
+     <Compile Include="Assets\SAColliderBuilder\Scripts\SABoneColliderBuilder.cs" />
+     <Compile Include="Assets\SAColliderBuilder\Scripts\SABoneColliderChild.cs" />
+     <Compile Include="Assets\SAColliderBuilder\Scripts\SAMeshCollider.cs" />
+     <Compile Include="Assets\SAColliderBuilder\Scripts\SAMeshColliderBuilder.cs" />
      <Compile Include="Assets\Script\ScoreScreen.cs" />
+     <Compile Include="Assets\Script\pinController.cs" />
+     <Compile Include="Assets\ballController.cs" />
+     <Compile Include="Assets\handController.cs" />
+     <None Include="Assets\BooleanOps\Files\keys.txt" />
+     <None Include="Assets\BooleanOps\Documentation\readme.txt" />
+     <None Include="Assets\BooleanOps\Meshes\Meshes.txt" />
+     <None Include="Assets\SAColliderBuilder\Readme_en.txt" />
+     <None Include="Assets\SAColliderBuilder\Readme_jp.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
