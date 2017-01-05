@@ -12,15 +12,17 @@ public class MainController : MonoBehaviour {
     private GameObject pinSaverTarget;
     private GameObject pinCleanerRecoverTarget;
     private List<GameObject> grabbedPins;
-    private bool performPinRecovery = true;
+    private bool performPinRecovery = false;
     private int turn = 1;
     private Vector3 saverInitialPosition;
     private Vector3 cleanerInitialPosition;
     private Vector3 cleanerRecoverInitialPosition;
     private bool initialPositionsSaved = false;
+    private bool pinsGrabbed = false;
+    private float timer = 0.0f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         fallenPins = new List<GameObject>();
         grabbedPins = new List<GameObject>();
         pinSaverSystem = GameObject.Find("pin saver");
@@ -37,24 +39,33 @@ public class MainController : MonoBehaviour {
         // Recover the fallen Pins and count them
         if (performPinRecovery)
         {
-            // Start fallen pins accounting, by recoverying them so that they could be countable
-            if (recoveryFallenPins()) {
-                if (!parameters.IsLastFrame)
-                {
-                    if (fallenPins.Count >= 10)
-                        fallenPins.Clear();
-                    // Go to the next frame
-                    parameters.initNextRound();
-                }
-                else
-                {
-                    // End the game and send the player to the menu
-                    endGame();
-                    sendPlayerToMenu();
-                }
+            if(timer >= 5.0f)
+            {
+                // Start fallen pins accounting, by recoverying them so that they could be countable
+                if (recoveryFallenPins()) {
+                    turn = 1;
+                    if (!parameters.IsLastFrame)
+                    {
+                        if (fallenPins.Count >= 10)
+                            fallenPins.Clear();
+                        // Go to the next frame
+                        parameters.initNextRound();
+                    }
+                    else
+                    {
+                        // End the game and send the player to the menu
+                        endGame();
+                        sendPlayerToMenu();
+                    }
 
-                performPinRecovery = false;
+                    performPinRecovery = false;
+                    timer = 0.0f;
+                }
+            }else
+            {
+                timer += Time.deltaTime;
             }
+            
         }
 	}
 
@@ -70,7 +81,7 @@ public class MainController : MonoBehaviour {
             // Return the ball to the storage
             Debug.Log("Ball " + obj.name + " in the cave");
             obj.transform.position = GameObject.Find("RightLane/Lane/ball_recovery_vertical_tunel_001/ball return gate").transform.position;
-            obj.GetComponent<Rigidbody>().AddForce(new Vector3(0, 60, 0), ForceMode.Impulse);
+            obj.GetComponent<Rigidbody>().AddForce(new Vector3(0, 73, 0), ForceMode.Impulse);
 
             // Tell the system to recover the pin
             performPinRecovery = true;
@@ -106,7 +117,7 @@ public class MainController : MonoBehaviour {
      */
     public bool recoveryFallenPins()
     {
-        GameObject cleaner = GameObject.Find("pin cleaner/pin cleaner recover");
+        GameObject cleaner = GameObject.Find("pin cleaner/cleaner recover");
         GameObject[] pins = GameObject.FindGameObjectsWithTag("Pin");
         Vector3 sPos = pinSaverSystem.transform.position;
         Vector3 cPos = pinCleanerSystem.transform.position;
@@ -148,26 +159,37 @@ public class MainController : MonoBehaviour {
             case 2:// Move the saver up with the remaining pins
 
                 // Move the saver up with the remaining pins
-                // Grab the remaining Pin
-                foreach(GameObject pin in pins)
+                // Grab the remaining Pin       
+                if (!pinsGrabbed)
                 {
-                    if (pin.GetComponent<MeshRenderer>().bounds.Intersects(pinSaverSystem.GetComponent<MeshRenderer>().bounds))
+                    foreach (Collider col in Physics.OverlapBox(pinSaverSystem.GetComponent<MeshRenderer>().bounds.center, pinSaverSystem.GetComponent<MeshRenderer>().bounds.extents))
                     {
-                        grabbedPins.Add(pin);
+                        GameObject pin = col.gameObject.transform.parent.parent.parent.gameObject;
+                        Debug.Log("Grabbing pin " + pin.name);
+                        if (pin.tag == "Pin")
+                        {
+                            Debug.Log("Grabbing pin " + pin.name);
+                            grabbedPins.Add(pin);
+                        }
                     }
+                    pinsGrabbed = true;
                 }
+                
                 // Move them up
                 if(sPos.y < saverInitialPosition.y)
                 {
                     sPos.y += v * Time.deltaTime;
                     foreach(GameObject pin in grabbedPins)
                     {
-                        Vector3 pPos = pin.transform.position;
-                        pPos.y += v * Time.deltaTime;
-                        pin.transform.position = pPos;
+                        //Vector3 pPos = pin.transform.position;
+                        //pPos.y += v * Time.deltaTime;
+                        pin.GetComponent<Rigidbody>().useGravity = false;
+                        pin.transform.SetParent(pinSaverSystem.transform);
+                        //pin.transform.position = pPos;
                     }
                 }else
                 {
+                    sPos.y = saverInitialPosition.y;
                     turn++;
                 }            
 
@@ -181,6 +203,7 @@ public class MainController : MonoBehaviour {
                 }
                 else
                 {
+                    pCPos.z = pinCleanerRecoverTarget.transform.position.z;
                     turn++;
                 }
                 break;
@@ -193,6 +216,7 @@ public class MainController : MonoBehaviour {
                 }
                 else
                 {
+                    pCPos.z = cleanerRecoverInitialPosition.z;
                     turn++;
                 }
                 break;
@@ -201,20 +225,28 @@ public class MainController : MonoBehaviour {
                 if (sPos.y > pinSaverTarget.transform.position.y)
                 {
                     sPos.y -= v * Time.deltaTime;
-                    foreach (GameObject pin in grabbedPins)
-                    {
-                        Vector3 pPos = pin.transform.position;
-                        pPos.y -= v * Time.deltaTime;
-                        pin.transform.position = pPos;
-                    }
                 }
                 else
                 {
+                    if (pinsGrabbed)
+                    {
+                        foreach (GameObject pin in grabbedPins)
+                        {
+                            //Vector3 pPos = pin.transform.position;
+                            //pPos.y -= v * Time.deltaTime;
+                            pin.transform.SetParent(GameObject.Find("Pins").transform);
+                            pin.GetComponent<Rigidbody>().useGravity = true;
+                            //pin.transform.position = pPos;
+                        }
+                        pinsGrabbed = false;
+                    }
+                    sPos.y = pinSaverTarget.transform.position.y;
                     turn++;
                 }
                 break;
 
             case 6:// Move the saver up to reach the initial position, and move the cleaner top to reach the initial position
+                grabbedPins.Clear();
                 if (sPos.y < saverInitialPosition.y)
                 {
                     sPos.y += v * Time.deltaTime;
@@ -226,7 +258,11 @@ public class MainController : MonoBehaviour {
                 }
 
                 if (sPos.y >= saverInitialPosition.y && cPos.y >= cleanerInitialPosition.y)
+                {
                     turn++;
+                    sPos.y = saverInitialPosition.y;
+                    cPos.y = cleanerInitialPosition.y;
+                }
                 break;
         }
 

@@ -14,6 +14,7 @@ public class ballController : MonoBehaviour {
     private GameObject hand;
     private GameObject pickedBall = null;
     private bool ballPickedUp = false;
+    private bool testing = false;
     
 
     // Use this for initialization
@@ -38,12 +39,18 @@ public class ballController : MonoBehaviour {
             /*********************************************
              *************** Keyboard usage***************
              *********************************************/
-
+            /*if (!testing)
+            {
+                GameObject.Find("ball (1)").GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 6.0f), ForceMode.VelocityChange);
+                testing = true;
+            }*/
             // Picking up the ball
             pickupOrReleaseBallWithMouse();
             if(pickedBall != null)
             {
-                pickedBall.transform.position = hand.transform.position;
+                //pickedBall.transform.position = hand.transform.position;
+                pickedBall.GetComponent<Rigidbody>().isKinematic = true;
+                pickedBall.transform.SetParent(hand.transform);
             }
 
             // Throwing the ball
@@ -110,6 +117,8 @@ public class ballController : MonoBehaviour {
         {
             pickedBall.GetComponent<Rigidbody>().freezeRotation = false;
             ballPickedUp = false;
+            pickedBall.GetComponent<Rigidbody>().isKinematic = false;
+            pickedBall.transform.SetParent(GameObject.Find("Balls").transform);
             pickedBall = null;
         }
     }
@@ -129,6 +138,7 @@ public class ballController : MonoBehaviour {
             Vector3 initialSpeed = computeInitialSpeedTest();
 
             // Apply the speed
+            pickedBall.GetComponent<Rigidbody>().isKinematic = false;
             pickedBall.GetComponent<Rigidbody>().AddForce(initialSpeed, ForceMode.VelocityChange);
 
             // Release the ball
